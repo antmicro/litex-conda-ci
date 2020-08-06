@@ -29,28 +29,9 @@ fi
 echo $PATH
 
 conda info
-
-conda config --set safety_checks disabled
-conda config --set channel_priority strict
-mkdir -p ~/.conda/pkg
-conda config --prepend pkgs_dirs ~/.conda/pkg
-
-conda config --show
+conda list
 
 echo "python==3.7.*" > $CONDA_PATH/conda-meta/pinned
-#echo "conda-build==3.14.0" >> $CONDA_PATH/conda-meta/pinned
-
 conda install -y python
+conda install -y pyyaml
 conda update -y conda
-
-conda install -y conda-build
-conda install -y conda-verify
-
-if [ $TRAVIS_OS_NAME != 'windows' ]; then
-    conda install -y ripgrep
-fi
-
-conda install -y anaconda-client
-conda install -y jinja2
-
-conda update -y --all

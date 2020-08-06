@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# CONDA_ENV will be activated by common.sh
+CONDA_ENV=workdir/conda-env
 source ./.travis/common.sh
 set -e
 
@@ -20,9 +22,9 @@ $SPACER
 start_section "conda.build" "${GREEN}Building..${NC}"
 if [[ $TRAVIS_OS_NAME != 'windows' ]]; then
     if [[ $KEEP_ALIVE = 'true' ]]; then
-        travis_wait $TRAVIS_MAX_TIME $CONDA_PATH/bin/python $TRAVIS_BUILD_DIR/.travis/.travis-output.py /tmp/output.log conda build $CONDA_BUILD_ARGS
+        travis_wait $TRAVIS_MAX_TIME python $TRAVIS_BUILD_DIR/.travis/.travis-output.py /tmp/output.log conda build $CONDA_BUILD_ARGS
     else
-        $CONDA_PATH/bin/python $TRAVIS_BUILD_DIR/.travis/.travis-output.py /tmp/output.log conda build $CONDA_BUILD_ARGS
+        python $TRAVIS_BUILD_DIR/.travis/.travis-output.py /tmp/output.log conda build $CONDA_BUILD_ARGS
     fi
 else
     # Work-around: prevent console output being mangled
