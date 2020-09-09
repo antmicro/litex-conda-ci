@@ -38,12 +38,12 @@ conda config --prepend pkgs_dirs ~/.conda/pkg
 conda config --show
 
 echo "python==3.7.*" > $CONDA_PATH/conda-meta/pinned
-#echo "conda-build==3.14.0" >> $CONDA_PATH/conda-meta/pinned
 
 conda install -y python
 conda update -y conda
 
-conda install -y conda-build
+echo "conda-build==3.18.11" >> $CONDA_PATH/conda-meta/pinned
+conda install -y conda-build=3.18.11
 conda install -y conda-verify
 
 if [ $TRAVIS_OS_NAME != 'windows' ]; then
