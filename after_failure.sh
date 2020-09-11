@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CONDA_ENV=/tmp/conda/env
 source $TRAVIS_BUILD_DIR/.travis/common.sh
 
 # Close the after_failure fold travis has created already.

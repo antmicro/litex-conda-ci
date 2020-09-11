@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# CONDA_ENV will be activated by common.sh
-CONDA_ENV=/tmp/conda/env
 source ./.travis/common.sh
 set -e
 
