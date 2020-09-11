@@ -112,12 +112,20 @@ mkdir -p "$BASE_PATH"
 if [ $TRAVIS_OS_NAME = 'windows' ]; then
     export CONDA_PATH='/c/tools/miniconda3'
     export PATH=$CONDA_PATH/Scripts/:$CONDA_PATH/:$PATH
+
+    # It is much shorter than '$PWD/workdir/conda-env' which in the end (+conda-bld/...)
+    # causes some build paths to exceed 255 chars (e.g. during prjtrellis building)
+    export CONDA_ENV='/c/Users/travis/conda-env'
+    if [ -d 'workdir/conda-env' ]; then
+        mv 'workdir/conda-env' "$CONDA_ENV"
+    fi
 else
     export CONDA_PATH="$BASE_PATH/conda"
     export PATH="$CONDA_PATH/bin:$PATH"
+    export CONDA_ENV='workdir/conda-env'
 fi
 
-if [ -n "$CONDA_ENV" ]; then
+if [ -d "$CONDA_ENV" ] && which conda &>/dev/null; then
     # >>> conda initialize >>>
     eval "$('conda' 'shell.bash' 'hook' 2> /dev/null)"
     # <<< conda initialize <<<

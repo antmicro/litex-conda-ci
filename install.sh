@@ -12,17 +12,12 @@ mkdir -p $BASE_PATH
 hash -r
 
 # Install the conda-build-prepare
-python -m pip install git+https://github.com/antmicro/conda-build-prepare@b6536cdc23f83f3a8cd00cd35a6817e85ecd9a9e#egg=conda-build-prepare
+python -m pip install git+https://github.com/antmicro/conda-build-prepare@dc7e493c31e853bce10d70b41017722d86b19662#egg=conda-build-prepare
 
 # Prepare the recipe and create workdir/conda-env to be activated
 python -m conda_build_prepare --dir workdir $PACKAGE
 
-# Move conda-env
-mkdir -p /tmp/conda
-mv workdir/conda-env /tmp/conda/env
-
 # Freshly created conda environment will be activated by the common.sh
-CONDA_ENV=/tmp/conda/env
 source $TRAVIS_BUILD_DIR/.travis/common.sh
 
 end_section "environment.conda"
