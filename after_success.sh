@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONDA_ENV=workdir/conda-env
+CONDA_ENV=/tmp/conda/env
 source ./.travis/common.sh
 set -e
 
