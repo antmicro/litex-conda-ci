@@ -12,7 +12,7 @@ mkdir -p $BASE_PATH
 hash -r
 
 # Install the conda-build-prepare
-python -m pip install git+https://github.com/antmicro/conda-build-prepare@ba9ad61a6a39fbc17ab0d20c3ed91580a7a4d54b#egg=conda-build-prepare
+python -m pip install git+https://github.com/antmicro/conda-build-prepare@861fc81feb1a8cdbbe52c899628805020f025e40#egg=conda-build-prepare
 
 # Prepare the recipe and create workdir/conda-env to be activated
 python -m conda_build_prepare --dir workdir $PACKAGE
