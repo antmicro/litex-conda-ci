@@ -1,7 +1,6 @@
 #!/bin/bash
 
 source ./.travis/common.sh
-set -e
 
 $SPACER
 
