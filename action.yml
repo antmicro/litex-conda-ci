@@ -16,6 +16,8 @@ runs:
         bash .github/scripts/download_sdk.sh
         bash .github/scripts/install.sh
         set -x
+        conda config --show | grep remote
+        set -x
         if [ $SCRIPT ]; then
           bash $SCRIPT
         else
